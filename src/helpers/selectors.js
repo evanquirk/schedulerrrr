@@ -11,11 +11,22 @@ export const getAppointmentsForDay = (state, day) => {
     }
   })
   return apptsThatDay.length ? apptsThatDay : [];
-}
+};
 
-//returns an array
-//returns an array with a length matching the number of appointments for that day
-//returns an array containing the correct appointment objects
-//returns an empty array when the days data is empty
-//returns an empty array when the day is not found
+export function getInterview(state, interview) {
+  console.log("STATE", state)
+  return !interview ? null : {student: interview.student, interviewer: state.interviewers[interview.interviewer]};
+};
 
+
+// function getInterview(state, interview) {
+//   if (!interview) {
+//     return null;
+//   }
+
+//   const interviewerInfo = state.interviewers[interview.interviewer];
+//   return {
+//     student: interview.student,
+//     interviewer: interviewerInfo
+//   }
+// }
