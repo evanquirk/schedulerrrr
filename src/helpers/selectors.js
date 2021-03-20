@@ -24,6 +24,5 @@ export function getInterviewersForDay(state, day) {
   currentDay.interviewers.map(appointmentId => state.interviewers[appointmentId]) 
   : []
   
-  console.log(interviewers)
   return interviewers;
 };
