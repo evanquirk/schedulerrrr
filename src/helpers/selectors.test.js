@@ -41,6 +41,7 @@ const state = {
       avatar: "https://i.imgur.com/Nmx0Qxo.png"
     }
   }
+  
 };
 
 test("getAppointmentsForDay returns an array", () => {
