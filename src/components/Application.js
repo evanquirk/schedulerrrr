@@ -31,7 +31,7 @@ export default function Application(props) {
   });
 
   function bookInterview(id, interview) {
-    return axios.put(`api/appointments/${id}`, {interview})
+    return axios.put(`/api/appointments/${id}`, {interview})
       .then(response => {
         if (response.status === 204) {
           const appointment = {
@@ -49,11 +49,13 @@ export default function Application(props) {
             appointments
           })
         }
-      }).catch(err => console.log(err))
+      }).catch(error => {
+        throw new Error(error)
+      })
   }
 
   function cancelInterview(id) {
-    return axios.delete(`api/appointments/${id}`)
+    return axios.delete(`/api/appointments/${id}`)
     .then(response => {
       if (response.status === 204) {
         const appointment = {
@@ -71,7 +73,9 @@ export default function Application(props) {
           appointments
         })
       } 
-    }).catch(err => console.log(err))
+    }).catch(error => {
+      throw new Error(error)
+    })
   }
   
   useEffect(() => {
