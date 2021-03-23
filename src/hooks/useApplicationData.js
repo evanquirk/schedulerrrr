@@ -82,11 +82,6 @@ export default function useApplicationData() {
       });
   }, [])
 
-  useEffect(() => {
-    console.log(state.appointments[1])
-    console.log(state.days)
-  }, [state.appointments])
-
   return {
     state,
     setDay,
