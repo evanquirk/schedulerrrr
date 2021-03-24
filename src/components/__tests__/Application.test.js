@@ -1,5 +1,16 @@
 import React from "react";
-import { render, cleanup, waitForElement, fireEvent, prettyDOM, getByText, getAllByTestId, getByAltText, getByPlaceholderText , queryByText , queryByAltText } from "@testing-library/react";
+import { 
+  cleanup, 
+  fireEvent, 
+  getAllByTestId, 
+  getByAltText, 
+  getByText, 
+  queryByAltText,
+  getByPlaceholderText , 
+  queryByText , 
+  render, 
+  waitForElement 
+} from "@testing-library/react";
 
 import Application from "components/Application";
 
@@ -81,9 +92,16 @@ describe("Application", () => {
 
   it("loads data, edits an interview and keeps the spots remaining for Monday the same", async () => {
     const { container } = render(<Application />);
-    //1. load the application
-    //2. load the student archie
-    //3. grab the appointment for archie
+    
+    await waitForElement(() => getByText(container, "Archie Cohen"));
+
+    const appointment = getAllByTestId(container, "appointment").find(
+      appointment => queryByText(appointment, "Archie Cohen")
+    );
+
+    fireEvent.click(queryByAltText(appointment, "Edit"));
+    
+
     //4. click the edit button
     //5. change the student name
     //6. click the save button
