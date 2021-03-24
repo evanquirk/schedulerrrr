@@ -1,5 +1,5 @@
 import React from "react";
-import { render, cleanup, waitForElement, fireEvent, prettyDOM, getByText, getAllByTestId, getByAltText, getByPlaceholderText , queryByText } from "@testing-library/react";
+import { render, cleanup, waitForElement, fireEvent, prettyDOM, getByText, getAllByTestId, getByAltText, getByPlaceholderText , queryByText , queryByAltText } from "@testing-library/react";
 
 import Application from "components/Application";
 
@@ -59,8 +59,8 @@ describe("Application", () => {
     const appointment = getAllByTestId(container, "appointment").find(
       appointment => queryByText(appointment, "Archie Cohen")
     );
-
-    // 4. Check that the confirmation message is shown.
+    fireEvent.click(queryByAltText(appointment, "Delete"));
+    expect(getByText(appointment, "Delete The Appointment?")).toBeInTheDocument;
     // 5. Click the "Confirm" button on the confirmation.
     // 6. Check that the element with the text "Deleting" is displayed.
     // 7. Wait until the element with the "Add" button is displayed.
