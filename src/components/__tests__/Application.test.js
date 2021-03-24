@@ -79,7 +79,18 @@ describe("Application", () => {
 
   });
 
-
+  it("loads data, edits an interview and keeps the spots remaining for Monday the same", async () => {
+    const { container } = render(<Application />);
+    //1. load the application
+    //2. load the student archie
+    //3. grab the appointment for archie
+    //4. click the edit button
+    //5. change the student name
+    //6. click the save button
+    //7. see saving message
+    //8. await the reloaded appointment with new name
+    //9. get the days list for Monday showing 1 spot remaining.
+  })
 
 })
 
