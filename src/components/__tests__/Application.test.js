@@ -60,8 +60,11 @@ describe("Application", () => {
       appointment => queryByText(appointment, "Archie Cohen")
     );
     fireEvent.click(queryByAltText(appointment, "Delete"));
-    expect(getByText(appointment, "Delete The Appointment?")).toBeInTheDocument;
-    // 5. Click the "Confirm" button on the confirmation.
+    expect(getByText(appointment, "Delete the appointment?")).toBeInTheDocument;
+   
+    fireEvent.click(queryByText(appointment, "Confirm"));
+
+    expect(getByText(appointment, "Deleting")).toBeInTheDocument();
     // 6. Check that the element with the text "Deleting" is displayed.
     // 7. Wait until the element with the "Add" button is displayed.
     // 8. Check that the DayListItem with the text "Monday" also has the text "2 spots remaining".
