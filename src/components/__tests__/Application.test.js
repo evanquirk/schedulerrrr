@@ -100,6 +100,10 @@ describe("Application", () => {
     );
 
     fireEvent.click(queryByAltText(appointment, "Edit"));
+
+    fireEvent.change(getByPlaceholderText(appointment, /enter student name/i), {
+      target: { value: "Lydia Miller-Jones" }
+    });
     
 
     //4. click the edit button
