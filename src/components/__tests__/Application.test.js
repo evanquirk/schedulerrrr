@@ -101,17 +101,22 @@ describe("Application", () => {
 
     fireEvent.click(queryByAltText(appointment, "Edit"));
 
-    fireEvent.change(getByPlaceholderText(appointment, /enter student name/i), {
+    fireEvent.change(getByPlaceholderText(appointment, /Enter Student Name/i), {
       target: { value: "Lydia Miller-Jones" }
     });
     
+    fireEvent.click(getByText(appointment, "Save"));
 
-    //4. click the edit button
-    //5. change the student name
-    //6. click the save button
-    //7. see saving message
-    //8. await the reloaded appointment with new name
-    //9. get the days list for Monday showing 1 spot remaining.
+    expect(getByText(appointment, "Saving")).toBeInTheDocument();
+  
+    await waitForElement(() => getByText(appointment, "Lydia Miller-Jones"));
+
+    const day = getAllByTestId(container, "day").find(day => {
+      return queryByText(day, "Monday");
+    });
+
+    expect(getByText(day, "1 spot remaining")).toBeInTheDocument();
+
   })
 
 })
