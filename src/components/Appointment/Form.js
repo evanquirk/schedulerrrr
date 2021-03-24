@@ -18,16 +18,10 @@ export default function Form(props) {
     props.onCancel()
   }
 
-  // function save() {
-  //   props.onSave(name, interviewer);
-  // };
-
   function validate() {
     if (!name) {
       return setError("student name cannot be blank!");
     }
-
-    //make sure to modify tests to include this edge case! \/\/
 
     if (!interviewer) {
       return setError("must select an interviewer!");
