@@ -24,13 +24,13 @@ export default function Form(props) {
 
   function validate() {
     if (!name) {
-      return setError("Student name cannot be blank!");
+      return setError("student name cannot be blank!");
     }
 
     //make sure to modify tests to include this edge case! \/\/
 
     if (!interviewer) {
-      return setError("Must select an interviewer!");
+      return setError("must select an interviewer!");
     }
     setError("");
     props.onSave(name, interviewer);
