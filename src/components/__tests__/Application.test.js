@@ -74,7 +74,9 @@ describe("Application", () => {
     const appointment = getAllByTestId(container, "appointment").find(
       appointment => queryByText(appointment, "Archie Cohen")
     );
+
     fireEvent.click(queryByAltText(appointment, "Delete"));
+
     expect(getByText(appointment, "Delete the appointment?")).toBeInTheDocument;
    
     fireEvent.click(queryByText(appointment, "Confirm"));
@@ -125,7 +127,19 @@ describe("Application", () => {
 //===========================================================
 
   it("shows the save error when failing to save an appointment", async () => {
-  axios.put.mockRejectedValueOnce();
+    axios.put.mockRejectedValueOnce();
+
+    const { container } = render(<Application/>);
+
+    await waitForElement(() => getByText(container, "Archie Cohen"));
+
+    const appointment = getAllByTestId(container, "appointment")[0];
+
+    fireEvent.click(getByAltText(appointment, "Add"));
+
+    fireEvent.change(getByPlaceholderText(appointment, /Enter Student Name/i), {
+      target: { value: "Lydia Miller-Jones" }
+    });
 
   })
 
@@ -133,11 +147,6 @@ describe("Application", () => {
 
   it("shows the delete error when failing to delete an existing appointment", async () => {
     axios.delete.mockRejectedValueOnce();
+  });
 
-
-})
-
-// "loads data, cancels an interview and increases the spots remaining for Monday by 1"
-// "loads data, edits an interview and keeps the spots remaining for Monday the same"
-// "shows the save error when failing to save an appointment"
-// "shows the delete error when failing to delete an existing appointment"
+});
