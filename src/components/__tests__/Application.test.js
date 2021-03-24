@@ -13,6 +13,7 @@ import {
 } from "@testing-library/react";
 
 import Application from "components/Application";
+import axios from "axios";
 
 
 afterEach(cleanup);
@@ -90,6 +91,8 @@ describe("Application", () => {
 
   });
 
+//===========================================================
+
   it("loads data, edits an interview and keeps the spots remaining for Monday the same", async () => {
     const { container } = render(<Application />);
     
@@ -118,6 +121,19 @@ describe("Application", () => {
     expect(getByText(day, "1 spot remaining")).toBeInTheDocument();
 
   })
+
+//===========================================================
+
+  it("shows the save error when failing to save an appointment", async () => {
+  axios.put.mockRejectedValueOnce();
+
+  })
+
+//===========================================================
+
+  it("shows the delete error when failing to delete an existing appointment", async () => {
+    axios.delete.mockRejectedValueOnce();
+
 
 })
 
