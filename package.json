@@ -2,6 +2,7 @@
   "name": "scheduler",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://schedulerrrr.herokuapp.com/",
   "dependencies": {
     "axios": "^0.21.1",
     "classnames": "^2.2.6",
@@ -17,7 +18,8 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public --ci",
     "build-storybook": "build-storybook -s public",
-    "cypress": "cypress open -P ."
+    "cypress": "cypress open -P .",
+    "coverage": "npm test -- --coverage --watchAll=false"
   },
   "browserslist": {
     "production": [
@@ -51,6 +53,5 @@
       "<rootDir>/node_modules/",
       "<rootDir>/.git/"
     ]
-  },
-  "proxy": "http://localhost:8001"
+  }
 }
